@@ -1,0 +1,293 @@
+const Discord = require('discord.js');
+const prefix = ';;'
+const token = process.env.token
+const client = new Discord.Client();
+
+client.once('ready', () => {
+    console.log('Ready!')
+    client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
+})
+
+client.on('message', (message) => {
+    
+// Recruitment Session Check Message
+
+    try {
+        if (message.member.roles.has('663189301827338250')) {
+            ;
+        }
+        else if (message.member.roles.has('664963796665892905')) {
+            if (message.content.startsWith(`${prefix}rscheck`)) {
+                var thisArg = message.content.split(' ')
+                thisArg.shift()
+                var finalArg = thisArg.join(' ')
+                const thisEmbed = new Discord.RichEmbed()
+                    .setTitle(':calendar: Recruitment Session Scheduled :calendar:')
+                    .setDescription('React with a :white_check_mark: for a Recruitment Session on the specified date!')
+                    .addField('Host', message.author)
+                    .addField('Date & Time', finalArg)
+                    .setColor('0x#33FFF0')
+                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                var channelToSend = client.channels.get('665180552005025802')
+                channelToSend.send(thisEmbed)
+                message.channel.send(':white_check_mark: | Event check message successfully posted! '+message.author)
+                channelToSend.send('<@&663183646374494208>')
+
+            }
+        }
+    }
+
+    catch {
+        console.error('Error found in the rscheck section.')
+    }
+
+// Amusement Park Session Check
+
+    try {
+        if (message.member.roles.has('663189301827338250')) {
+            ;
+        }
+        else if (message.member.roles.has('664963796665892905')) {
+            if (message.content.startsWith(`${prefix}rscheck`)) {
+                var thisArg = message.content.split(' ')
+                thisArg.shift()
+                var finalArg = thisArg.join(' ')
+                const thisEmbed = new Discord.RichEmbed()
+                    .setTitle(':calendar: Amusement Park Session Scheduled :calendar:')
+                    .setDescription('React with a :white_check_mark: for an Amusement Park Session on the specified date!')
+                    .addField('Host', message.author)
+                    .addField('Date & Time', finalArg)
+                    .setColor('0x#33FFF0')
+                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                var channelToSend = client.channels.get('665180552005025802')
+                channelToSend.send(thisEmbed)
+                message.channel.send(':white_check_mark: | Event check message successfully posted! '+message.author)
+                channelToSend.send('<@&663183646374494208>')
+
+            }
+        }
+    }
+
+    catch {
+        console.error('Error found in the sessioncheck section.')
+    }
+
+// RS Start
+
+    try {
+        if (message.member.roles.has('663189301827338250')) {
+            ;
+        }
+        else if (message.member.roles.has('664963796665892905')) {
+            if (message.content.startsWith(`${prefix}rsstart`)) {
+                var thisArg = message.content.split(' ')
+                thisArg.shift()
+                var finalArg = thisArg.join(' ')
+                const RSEmbed = new Discord.RichEmbed()
+                    .setTitle(':family: Recruitment Session Starting :family:')
+                    .setDescription('A recruitment session is starting.')
+                    .addField('Host', message.author)
+                    .addField('Notes', finalArg)
+                    .setColor('0x#33FFF0')
+                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                var channelToSend = client.channels.get('665180552005025802')
+                channelToSend.send(RSEmbed)
+                message.channel.send(':white_check_mark: | Event message successfully announced! '+message.author)
+                channelToSend.send('<@&663183646374494208>')
+            }
+        }
+    }
+
+    catch {
+        console.error('Error found in the RS Start section.')
+    }
+
+// Park Session Start
+
+    try {
+        if (message.member.roles.has('663189301827338250')) {
+            ;
+        }
+        else if (message.member.roles.has('664963796665892905')) {
+            if (message.content.startsWith(`${prefix}sessionstart`)) {
+                var thisArg = message.content.split(' ')
+                thisArg.shift()
+                var finalArg = thisArg.join(' ')
+                const APEmbed = new Discord.RichEmbed()
+                    .setTitle(':balloon: Amusement Park Session Starting :balloon:')
+                    .setDescription('An Amusement Park Session is starting.')
+                    .addField('Host', message.author)
+                    .addField('Notes', finalArg)
+                    .setColor('0x#33FFF0')
+                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                var channelToSend = client.channels.get('665180552005025802')
+                channelToSend.send(APEmbed)
+                message.channel.send(':white_check_mark: | Event message successfully announced! '+message.author)
+                channelToSend.send('<@&663183646374494208>')
+            }
+        }
+    }
+
+    catch {
+        console.error('Error found in the AP Start section.')
+    }
+
+// RS End
+
+    try {
+        if (message.member.roles.has('663189301827338250')) {
+            ;
+        }
+        else if (message.member.roles.has('664963796665892905')) {
+            if (message.content.startsWith(`${prefix}rsend`)) {
+                var thisArg = message.content.split(' ')
+                thisArg.shift()
+                var finalArg = thisArg.join(' ')
+                const RSEmbed2 = new Discord.RichEmbed()
+                    .setTitle(':family: Recruitment Session Ending :family:')
+                    .setDescription('The recruitment session has ended.')
+                    .addField('Host', message.author)
+                    .setColor('0x#33FFF0')
+                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                var channelToSend = client.channels.get('665180552005025802')
+                channelToSend.send(RSEmbed2)
+                message.channel.send(':white_check_mark: | Event ending smessage successfully announced! '+message.author)
+                //channelToSend.send('<@&663183646374494208>')
+            }
+        }
+    }
+
+    catch {
+        console.error('Error found in the RS End section.')
+    }
+
+// AP End
+
+try {
+    if (message.member.roles.has('663189301827338250')) {
+        ;
+    }
+    else if (message.member.roles.has('664963796665892905')) {
+        if (message.content.startsWith(`${prefix}sessionend`)) {
+            var thisArg = message.content.split(' ')
+            thisArg.shift()
+            var finalArg = thisArg.join(' ')
+            const RSEmbed2 = new Discord.RichEmbed()
+                .setTitle(':balloon: Amusement Park Session Ending :balloon:')
+                .setDescription('The amusement park session has ended.')
+                .addField('Host', message.author)
+                .setColor('0x#33FFF0')
+                .setFooter('Bot created by mvh2016 | mvh#3155')
+            var channelToSend = client.channels.get('665180552005025802')
+            channelToSend.send(RSEmbed2)
+            message.channel.send(':white_check_mark: | Event ending smessage successfully announced! '+message.author)
+            //channelToSend.send('<@&663183646374494208>')
+        }
+    }
+}
+
+catch {
+    console.error('Error found in the AP End section.')
+}
+
+// Event Logging
+
+    try {
+
+        //console.log(message.channel.id)
+        if (message.author.id === '668834860793856009') {
+            ;
+        }
+        else {
+            if (message.channel.id === '665331323996733441') {
+                //console.log ('Message is in channel!')
+                var splitContent = message.content.split('\n')
+                var getUsername = splitContent[0]
+                var getAttendees = splitContent[1]
+                var getTypeOfEvent = splitContent[2]
+                var getProof = splitContent[3]
+                var splitUsername = getUsername.split(': ')
+                var splitAttendees = getAttendees.split(': ')
+                var splitToe = getTypeOfEvent.split(': ')
+                var splitProof = getProof.split(': ')
+                if (splitUsername[0] === 'Username') {
+                    if (splitAttendees[0] === 'Attendees') {
+                        if (splitToe[0] === 'Type of Event') {
+                            if (splitProof[0] === 'Proof') {
+                                if ((splitProof[1]).includes('http:')) {
+                                    const eventLogEmbed = new Discord.RichEmbed()
+                                    .setTitle(':pencil: Confirmed Event Log :pencil:')
+                                    .setDescription('HoD+ - Review this and allocate points!')
+                                    .addField('Username of Host', (splitUsername[1]), false)
+                                    .addField('Attendees', (splitAttendees[1]), false)
+                                    .addField('Type of Event', (splitToe[1]), false)
+                                    .addField('Proof', (splitProof[1]), false)
+                                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                                    .setColor('0x#B30BD8')
+                                    var sendingChannel = client.channels.get('665346430298488845')
+                                    sendingChannel.send(eventLogEmbed)
+                                    message.channel.send(':white_check_mark: Your event log has been approved! Wait for a HoD to allocate points. '+message.author)
+                                }
+                                else {
+                                    message.channel.send(':warning: Proof must be in link form (with `http:` at the start. Use gyazo, imgur, or google drive. '+message.author)
+                                }
+                            
+                            }
+                            else {
+                                message.channel.send(':warning: Invalid format. Use `Proof` instead of '+'`'+(splitProof[0])+'`'+' (case-sensitive)')
+                            }
+                        }
+                        else {
+                            message.channel.send(':warning: Invalid format. Use `Type of Event` instead of '+'`'+(splitToe[0])+'`'+' (case-sensitive)')
+                        }
+                    }
+                    else {
+                        message.channel.send(':warning: Invalid format. Use `Attendees` instead of '+'`'+(splitAttendees[0])+'`'+' (case-sensitive)')
+                    }
+                }
+                else {
+                    message.channel.send(":warning: Invalid format. Use `Username` instead of "+'`'+(splitUsername[0])+'`'+' (case-sensitive)')
+                }
+            }
+            else {
+                ;
+            }
+    
+        }
+    }
+        
+
+    catch { 
+        console.error('Error found in the event logging channel.')
+    }
+
+// Command List
+
+    try {
+
+        if (message.content.startsWith(`${prefix}commands`)) {
+            const helpEmbed = new Discord.RichEmbed()
+                .setTitle(':ferris_wheel: Fun Times Bot :ferris_wheel:')
+                .setDescription('A full list of commands that I accept!')
+                .addField('`;;rscheck <date & time>`', 'Sends an event check message for a recruitment session. Include the date, time, and timezone. \n**You must have the Event Host role!**', false)
+                .addField('`;;rsstart <notes>`', 'Sends a start notification for a recruitment session. Include any notes for attendees, such as where to head to. \n **You must have the Event Host role!**', false)
+                .addField('`;;rsend`', 'Sends an ending notification for a recruitment session. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessioncheck <date & time>`', 'Sends an event check message for an amusement park session. Include the date, time and timezone. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessionstart`', 'Sends a start notification for an amusement park session. Include any notes for attendees, such as where to head to. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessionend`', 'Sends an ending notification for an amusement park session. \n **You must have the Event Host role!**', false)
+                .setColor('0x#0BA6D8')
+                .setFooter('Bot created by mvh2016 | mvh#3155')
+            message.channel.send(helpEmbed)
+        }
+        else {
+            ;
+        }
+    }
+
+    catch {
+        
+    }
+
+})
+
+client.login(token);
