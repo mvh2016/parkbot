@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const prefix = ';;'
 const token = process.env.token
+const request = require('request');
 const client = new Discord.Client();
 
 client.once('ready', () => {
@@ -288,6 +289,37 @@ catch {
         
     }
 
+    try {
+
+        const request = require('request')
+
+        if (message.content.startsWith(`${prefix}verify`)) {
+            const request = require('request');
+                request('https://verify.eryn.io/api/user/'+message.author.id, function (error, response, body) {
+                    console.error('error:', error); // Print the error if one occurred
+                    console.log('body:', body); // Print the HTML for the Google homepage.
+                    var result = body.split(',')
+                    console.log(result)
+                    var newResult = (result[1].split(':'))
+                    console.log(newResult)
+                    finalResult = newResult[1]
+                    console.log(finalResult)
+                    lastResult = finalResult.slice(1)
+                    lastLastResult = lastResult.slice(0, lastResult.length - 1);
+                    console.log(lastLastResult)
+
+                    //Sending the message
+
+                    message.channel.send(':white_check_mark: You have been verified as '+lastLastResult+'.')
+                    message.member.send(':white_check_mark: You\'ve been verified as '+lastLastResult+' for Fun Times Amusement Park! Welcome! \n\n*This is an automated message. For assistance contact mvh#3155.*')
+                    message.member.setNickname(lastLastResult)
+                });
+            
+        }}
+
+    catch {
+        message.channel.send('There was an error.')
+    }
 })
 
 client.login(token);
