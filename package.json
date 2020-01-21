@@ -1,12 +1,12 @@
 {
-  "name": "discord.js",
+  "name": "discord",
   "version": "1.0.0",
   "description": "hi",
   "main": "index.js",
   "dependencies": {
     "discord": "^0.8.2",
-    "discord.js": "^11.5.1"
-    "request": "2.81.0"
+    "discord.js": "^11.5.1",
+    "request": "^2.81.0"
   },
   "devDependencies": {},
   "scripts": {
