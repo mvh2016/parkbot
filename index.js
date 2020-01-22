@@ -1,17 +1,25 @@
 const Discord = require('discord.js');
 const prefix = ';;'
 const token = process.env.token
+const config = require("./config.json");
 const request = require('request');
+const rbx = require ('noblox.js')
 const client = new Discord.Client();
+const chalk = require('chalk');
+const figlet = require('figlet');
+
 
 client.once('ready', () => {
     console.log('Ready!')
     client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
 })
 
+rbx.cookieLogin(process.env.cookie);
+
 client.on('message', (message) => {
     
-// Recruitment Session Check Message
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
 
     try {
         if (message.member.roles.has('663189301827338250')) {
@@ -319,6 +327,309 @@ catch {
 
     catch {
         message.channel.send('There was an error.')
+    }
+
+    if(command === 'setrank') {
+        if(!message.member.roles.some(r=>["Ranking Permissions"].includes(r.name)) )
+            return message.channel.send({embed: {
+                color: 15406156,
+                description: "You need the `Ranking Permissions` role to run this command.",
+                author: {
+                    name: message.author.tag,
+                    icon_url: message.author.displayAvatarURL
+                }
+            }});
+            var username = args[0]
+            var rankIdentifier = Number(args[1]) ? Number(args[1]) : args[1];
+            if (!rankIdentifier) return message.channel.send({embed: {
+                color: 15406156,
+                description: "Please specify a rank.",
+                author: {
+                    name: message.author.tag,
+                    icon_url: message.author.displayAvatarURL
+                }
+            }});
+            if (username){
+                rbx.getIdFromUsername(username)
+                .then(function(id){
+                    rbx.getRankInGroup(config.groupId, id)
+                    .then(function(rank){
+                        if(config.maximumRank <= rank){
+                            message.channel.send({embed: {
+                                color: 15406156,
+                                description: "This rank cannot be ranked by this bot.",
+                                author: {
+                                    name: message.author.tag,
+                                    icon_url: message.author.displayAvatarURL
+                                }
+                            }});
+                        } else {
+                            rbx.setRank(config.groupId, id, rankIdentifier)
+                            .then(function(newRole){
+                                message.channel.send({embed: {
+                                    color: 8117429,
+                                    description: `You have successfully ranked ${username} to ${rankIdentifier}!`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                                if(config.logchannelid === 'false') return;
+                                var logchannel = message.guild.channels.get(config.logchannelid);
+                                logchannel.send({embed: {
+                                    color: 11253955,
+                                    description: `<@${message.author.id}> has ranked ${username} to ${rankIdentifier}.`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    },
+                                    footer: {
+                                        text: 'Action Logs'
+                                    },
+                                    timestamp: new Date(),
+                                    thumbnail: {
+                                        url: `http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=${username}`
+                                    }
+                                }});
+                            }).catch(function(err){
+                                console.log(chalk.red('Issue with setRank: ' + err));
+                                message.channel.send({embed: {
+                                    color: 15406156, 
+                                    description: "Something went wrong. Issue logged.",
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                            })
+                        }
+                    }).catch(function(err){
+                        message.channel.send({embed: {
+                            color: 15406156,
+                            description: "Something went wrong. Issue logged.",
+                            author: {
+                                name: message.author.tag,
+                                icon_url: message.author.displayAvatarURL
+                            }
+                        }});
+                    });
+                }).catch(function(err){
+                    message.channel.send({embed: {
+                        color: 15406156,
+                        description: `Oops! ${username} does not exist in the Roblox user database. Perhaps you misspelled?`,
+                        author: {
+                            name: message.author.tag,
+                            icon_url: message.author.displayAvatarURL
+                        }
+                    }});
+                });
+            } else {
+                message.channel.send({embed: {
+                    color: 15406156,
+                    description: "Please specify a target username.",
+                    author: {
+                        name: message.author.tag,
+                        icon_url: message.author.displayAvatarURL
+                    }
+                }});
+            }
+            return;
+    }
+
+    if(command === 'promote') {
+        if(!message.member.roles.some(r=>["Ranking Permissions"].includes(r.name)) )
+            return message.channel.send({embed: {
+                color: 15406156,
+                description: "You need the `Ranking Permissions` role to run this command.",
+                author: {
+                    name: message.author.tag,
+                    icon_url: message.author.displayAvatarURL
+                }
+            }});
+            var username = args[0]
+            if (username){
+                rbx.getIdFromUsername(username)
+                .then(function(id){
+                    rbx.getRankInGroup(config.groupId, id)
+                    .then(function(rank){
+                        if(config.maximumRank <= rank){
+                            message.channel.send({embed: {
+                                color: 15406156,
+                                description: "This rank cannot be promoted by this bot.",
+                                author: {
+                                    name: message.author.tag,
+                                    icon_url: message.author.displayAvatarURL
+                                }
+                            }});
+                        } else {
+                            rbx.promote(config.groupId, id)
+                            .then(function(newRole){
+                                message.channel.send({embed: {
+                                    color: 8117429,
+                                    description: `You have successfully promoted ${username}!`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                                if(config.logchannelid === 'false') return;
+                                var logchannel = message.guild.channels.get(config.logchannelid);
+                                logchannel.send({embed: {
+                                    color: 11253955,
+                                    description: `<@${message.author.id}> has promoted ${username}.`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    },
+                                    footer: {
+                                        text: 'Action Logs'
+                                    },
+                                    timestamp: new Date(),
+                                    thumbnail: {
+                                        url: `http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=${username}`
+                                    }
+                                }});
+                            }).catch(function(err){
+                                console.log(chalk.red('Issue with promote: ' + err));
+                                message.channel.send({embed: {
+                                    color: 15406156, 
+                                    description: "Oops! Something went wrong. The issue has been logged to the bot console.",
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                            })
+                        }
+                    }).catch(function(err){
+                        message.channel.send({embed: {
+                            color: 15406156,
+                            description: "Oops! Something went wrong. The issue has been logged to the bot console.",
+                            author: {
+                                name: message.author.tag,
+                                icon_url: message.author.displayAvatarURL
+                            }
+                        }});
+                    });
+                }).catch(function(err){
+                    message.channel.send({embed: {
+                        color: 15406156,
+                        description: `${username} does not exist in the Roblox user database.`,
+                        author: {
+                            name: message.author.tag,
+                            icon_url: message.author.displayAvatarURL
+                        }
+                    }});
+                });
+            } else {
+                message.channel.send({embed: {
+                    color: 15406156,
+                    description: "Please specify a target username.",
+                    author: {
+                        name: message.author.tag,
+                        icon_url: message.author.displayAvatarURL
+                    }
+                }});
+            }
+            return;
+    }
+
+    if(command === "demote") {
+        if(!message.member.roles.some(r=>["Ranking Permissions"].includes(r.name)) )
+            return message.channel.send({embed: {
+                color: 15406156,
+                description: "You need the `Ranking Permissions` role to run this command.",
+                author: {
+                    name: message.author.tag,
+                    icon_url: message.author.displayAvatarURL
+                }
+            }});
+            var username = args[0]
+            if (username){
+                rbx.getIdFromUsername(username)
+                .then(function(id){
+                    rbx.getRankInGroup(config.groupId, id)
+                    .then(function(rank){
+                        if(config.maximumRank <= rank){
+                            message.channel.send({embed: {
+                                color: 15406156,
+                                description: "This rank was unable to be ranked.",
+                                author: {
+                                    name: message.author.tag,
+                                    icon_url: message.author.displayAvatarURL
+                                }
+                            }});
+                        } else {
+                            rbx.demote(config.groupId, id)
+                            .then(function(newRole){
+                                message.channel.send({embed: {
+                                    color: 8117429,
+                                    description: `${username} was successfully demoted!`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                                if(config.logchannelid === 'false') return;
+                                var logchannel = message.guild.channels.get(config.logchannelid);
+                                logchannel.send({embed: {
+                                    color: 11253955,
+                                    description: `<@${message.author.id}> has demoted ${username}.`,
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    },
+                                    footer: {
+                                        text: 'Action Logs'
+                                    },
+                                    timestamp: new Date(),
+                                    thumbnail: {
+                                        url: `http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=${username}`
+                                    }
+                                }});
+                            }).catch(function(err){
+                                console.log(chalk.red('Issue with demote: ' + err));
+                                message.channel.send({embed: {
+                                    color: 15406156, 
+                                    description: "Something went wrong. Issue logged.",
+                                    author: {
+                                        name: message.author.tag,
+                                        icon_url: message.author.displayAvatarURL
+                                    }
+                                }});
+                            })
+                        }
+                    }).catch(function(err){
+                        message.channel.send({embed: {
+                            color: 15406156,
+                            description: "Something went wrong. Issue logged.",
+                            author: {
+                                name: message.author.tag,
+                                icon_url: message.author.displayAvatarURL
+                            }
+                        }});
+                    });
+                }).catch(function(err){
+                    message.channel.send({embed: {
+                        color: 15406156,
+                        description: `${username} does not exist in the Roblox user database.`,
+                        author: {
+                            name: message.author.tag,
+                            icon_url: message.author.displayAvatarURL
+                        }
+                    }});
+                });
+            } else {
+                message.channel.send({embed: {
+                    color: 15406156,
+                    description: "Please specify a username to demote.",
+                    author: {
+                        name: message.author.tag,
+                        icon_url: message.author.displayAvatarURL
+                    }
+                }});
+            }
+            return;
     }
 })
 
