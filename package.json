@@ -1,17 +1,21 @@
 {
   "name": "discord",
-  "version": "1.0.0",
-  "description": "hi",
+  "version": "3.0.0",
+  "description": "This is a really cool roblox rank bot that I made! It is open source, so feel free to use it for your server/bot. Join the support server here: https://lengo.codes/discord",
   "main": "index.js",
-  "dependencies": {
-    "discord": "^0.8.2",
-    "discord.js": "^11.5.1",
-    "request": "^2.81.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "start": "node index.js",
+    "setup": "node installer.js"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [],
+  "author": "Lengo#0001",
+  "license": "Unlicense",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "discord.js": "^11.5.1",
+    "figlet": "^1.2.3",
+    "inquirer": "^6.5.0",
+    "noblox.js": "^4.2.6"
+  },
+  "devDependencies": {}
 }
