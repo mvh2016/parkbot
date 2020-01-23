@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const prefix = ';;'
-const token = process.env.token
 const config = require("./config.json");
+const token = (config.token)
 const request = require('request');
 const rbx = require ('noblox.js')
 const client = new Discord.Client();
@@ -14,7 +14,7 @@ client.once('ready', () => {
     client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
 })
 
-rbx.cookieLogin(process.env.cookie);
+rbx.cookieLogin(config.cookie);
 
 client.on('message', (message) => {
     
@@ -334,20 +334,16 @@ catch {
             return message.channel.send({embed: {
                 color: 15406156,
                 description: "You need the `Ranking Permissions` role to run this command.",
-                author: {
-                    name: message.author.tag,
-                    icon_url: message.author.displayAvatarURL
-                }
+                title: "FTAP Rank System",
+                footer: "Bot created by mvh2016 | mvh#3155"
             }});
             var username = args[0]
             var rankIdentifier = Number(args[1]) ? Number(args[1]) : args[1];
             if (!rankIdentifier) return message.channel.send({embed: {
                 color: 15406156,
                 description: "Please specify a rank.",
-                author: {
-                    name: message.author.tag,
-                    icon_url: message.author.displayAvatarURL
-                }
+                title: "FTAP Rank System",
+                footer: "Bot created by mvh2016 | mvh#3155"
             }});
             if (username){
                 rbx.getIdFromUsername(username)
@@ -358,10 +354,8 @@ catch {
                             message.channel.send({embed: {
                                 color: 15406156,
                                 description: "This rank cannot be ranked by this bot.",
-                                author: {
-                                    name: message.author.tag,
-                                    icon_url: message.author.displayAvatarURL
-                                }
+                                title: "FTAP Rank System",
+                                footer: "Bot created by mvh2016 | mvh#3155"
                             }});
                         } else {
                             rbx.setRank(config.groupId, id, rankIdentifier)
@@ -369,22 +363,17 @@ catch {
                                 message.channel.send({embed: {
                                     color: 8117429,
                                     description: `You have successfully ranked ${username} to ${rankIdentifier}!`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
                                 logchannel.send({embed: {
                                     color: 11253955,
                                     description: `<@${message.author.id}> has ranked ${username} to ${rankIdentifier}.`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    },
+                                    title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Action Logs'
+                                        text: 'Bot created by mvh2016 | mvh#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -395,42 +384,34 @@ catch {
                                 console.log(chalk.red('Issue with setRank: ' + err));
                                 message.channel.send({embed: {
                                     color: 15406156, 
-                                    description: "Something went wrong. Issue logged.",
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    description: "Oops! Something went wrong. The issue has been logged to the bot console.",
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                                 }});
                             })
                         }
                     }).catch(function(err){
                         message.channel.send({embed: {
                             color: 15406156,
-                            description: "Something went wrong. Issue logged.",
-                            author: {
-                                name: message.author.tag,
-                                icon_url: message.author.displayAvatarURL
-                            }
+                            description: "Oops! Something went wrong. The issue has been logged to the bot console.",
+                            title: "FTAP Rank System",
+                            footer: "Bot created by mvh2016 | mvh#3155"
                         }});
                     });
                 }).catch(function(err){
                     message.channel.send({embed: {
                         color: 15406156,
                         description: `Oops! ${username} does not exist in the Roblox user database. Perhaps you misspelled?`,
-                        author: {
-                            name: message.author.tag,
-                            icon_url: message.author.displayAvatarURL
-                        }
+                        title: "FTAP Rank System",
+                        footer: "Bot created by mvh2016 | mvh#3155"
                     }});
                 });
             } else {
                 message.channel.send({embed: {
                     color: 15406156,
                     description: "Please specify a target username.",
-                    author: {
-                        name: message.author.tag,
-                        icon_url: message.author.displayAvatarURL
-                    }
+                    title: "FTAP Rank System",
+                    footer: "Bot created by mvh2016 | mvh#3155"
                 }});
             }
             return;
@@ -441,10 +422,8 @@ catch {
             return message.channel.send({embed: {
                 color: 15406156,
                 description: "You need the `Ranking Permissions` role to run this command.",
-                author: {
-                    name: message.author.tag,
-                    icon_url: message.author.displayAvatarURL
-                }
+                title: "FTAP Rank System",
+                footer: "Bot created by mvh2016 | mvh#3155"
             }});
             var username = args[0]
             if (username){
@@ -456,10 +435,8 @@ catch {
                             message.channel.send({embed: {
                                 color: 15406156,
                                 description: "This rank cannot be promoted by this bot.",
-                                author: {
-                                    name: message.author.tag,
-                                    icon_url: message.author.displayAvatarURL
-                                }
+                                title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                             }});
                         } else {
                             rbx.promote(config.groupId, id)
@@ -467,22 +444,17 @@ catch {
                                 message.channel.send({embed: {
                                     color: 8117429,
                                     description: `You have successfully promoted ${username}!`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
                                 logchannel.send({embed: {
                                     color: 11253955,
                                     description: `<@${message.author.id}> has promoted ${username}.`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    },
+                                    title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Action Logs'
+                                        text: 'Bot created by mvh2016 | mvh#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -493,42 +465,34 @@ catch {
                                 console.log(chalk.red('Issue with promote: ' + err));
                                 message.channel.send({embed: {
                                     color: 15406156, 
-                                    description: "Oops! Something went wrong. The issue has been logged to the bot console.",
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    description: "An error occurred.",
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                                 }});
                             })
                         }
                     }).catch(function(err){
                         message.channel.send({embed: {
                             color: 15406156,
-                            description: "Oops! Something went wrong. The issue has been logged to the bot console.",
-                            author: {
-                                name: message.author.tag,
-                                icon_url: message.author.displayAvatarURL
-                            }
+                            description: "An error occurred.",
+                            title: "FTAP Rank System",
+                            footer: "Bot created by mvh2016 | mvh#3155"
                         }});
                     });
                 }).catch(function(err){
                     message.channel.send({embed: {
                         color: 15406156,
-                        description: `${username} does not exist in the Roblox user database.`,
-                        author: {
-                            name: message.author.tag,
-                            icon_url: message.author.displayAvatarURL
-                        }
+                        description: `${username} does not exist in the Roblox user database. Please try again.`,
+                        title: "FTAP Rank System",
+                        footer: "Bot created by mvh2016 | mvh#3155"
                     }});
                 });
             } else {
                 message.channel.send({embed: {
                     color: 15406156,
                     description: "Please specify a target username.",
-                    author: {
-                        name: message.author.tag,
-                        icon_url: message.author.displayAvatarURL
-                    }
+                    title: "FTAP Rank System",
+                    footer: "Bot created by mvh2016 | mvh#3155"
                 }});
             }
             return;
@@ -553,34 +517,27 @@ catch {
                         if(config.maximumRank <= rank){
                             message.channel.send({embed: {
                                 color: 15406156,
-                                description: "This rank was unable to be ranked.",
-                                author: {
-                                    name: message.author.tag,
-                                    icon_url: message.author.displayAvatarURL
-                                }
+                                description: "Unfortunately, Fun Times Bot was unable to rank this user.",
+                                title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                             }});
                         } else {
                             rbx.demote(config.groupId, id)
                             .then(function(newRole){
                                 message.channel.send({embed: {
                                     color: 8117429,
-                                    description: `${username} was successfully demoted!`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    description: `You have successfully demoted ${username}!`,
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 "
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
                                 logchannel.send({embed: {
                                     color: 11253955,
                                     description: `<@${message.author.id}> has demoted ${username}.`,
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    },
+                                    title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Action Logs'
+                                        text: 'Bot created by mvh2016 | mvh#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -591,42 +548,34 @@ catch {
                                 console.log(chalk.red('Issue with demote: ' + err));
                                 message.channel.send({embed: {
                                     color: 15406156, 
-                                    description: "Something went wrong. Issue logged.",
-                                    author: {
-                                        name: message.author.tag,
-                                        icon_url: message.author.displayAvatarURL
-                                    }
+                                    description: "An error occurred.",
+                                    title: "FTAP Rank System",
+                                    footer: "Bot created by mvh2016 | mvh#3155"
                                 }});
                             })
                         }
                     }).catch(function(err){
                         message.channel.send({embed: {
                             color: 15406156,
-                            description: "Something went wrong. Issue logged.",
-                            author: {
-                                name: message.author.tag,
-                                icon_url: message.author.displayAvatarURL
-                            }
+                            description: "An error occurred.",
+                            title: "FTAP Rank System",
+                            footer: "Bot created by mvh2016 | mvh#3155"
                         }});
                     });
                 }).catch(function(err){
                     message.channel.send({embed: {
                         color: 15406156,
-                        description: `${username} does not exist in the Roblox user database.`,
-                        author: {
-                            name: message.author.tag,
-                            icon_url: message.author.displayAvatarURL
-                        }
+                        description: `${username} does not exist in the Roblox user database. Please try again.`,
+                        title: "FTAP Rank System",
+                        footer: "Bot created by mvh2016 | mvh#3155"
                     }});
                 });
             } else {
                 message.channel.send({embed: {
                     color: 15406156,
-                    description: "Please specify a username to demote.",
-                    author: {
-                        name: message.author.tag,
-                        icon_url: message.author.displayAvatarURL
-                    }
+                    description: "Please specify a target username.",
+                    title: "FTAP Rank System",
+                    footer: "Bot created by mvh2016 | mvh#3155"
                 }});
             }
             return;
