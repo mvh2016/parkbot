@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 const prefix = ';;'
 const config = require("./config.json");
-const token = process.env.token
-const cookie = process.env.cookie
+const token = (config.token)
 const request = require('request');
 const rbx = require ('noblox.js')
 const client = new Discord.Client();
@@ -15,7 +14,7 @@ client.once('ready', () => {
     client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
 })
 
-rbx.cookieLogin(cookie);
+rbx.cookieLogin(config.cookie);
 
 client.on('message', (message) => {
     
@@ -269,7 +268,6 @@ catch {
 
     catch { 
         console.error('Error found in the event logging channel.')
-        message.channel.send(':warning: Invalid format. Follow pinned messages. '+message.author)
     }
 
 // Command List
@@ -320,7 +318,7 @@ catch {
 
                     //Sending the message
 
-                    message.channel.send(':white_check_mark: You have been verified as '+lastLastResult+'.')
+                    message.channel.send('**:white_check_mark: You have been verified as '+lastLastResult+'.** \n\nIf this username is incorrect please verify with RoVer at http://verify.eryn.io/')
                     message.member.send(':white_check_mark: You\'ve been verified as '+lastLastResult+' for Fun Times Amusement Park! Welcome! \n\n*This is an automated message. For assistance contact mvh#3155.*')
                     message.member.setNickname(lastLastResult)
                 });
