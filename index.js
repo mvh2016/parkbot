@@ -320,7 +320,7 @@ catch {
 
                     //Sending the message
 
-                    message.channel.send(':white_check_mark: You have been verified as '+lastLastResult+'.')
+                    message.channel.send(':white_check_mark: You have been verified as '+lastLastResult+'. \n\n **If this is not your account, or you\'d like to switch accounts, visit http://verify.eryn.io**')
                     message.member.send(':white_check_mark: You\'ve been verified as '+lastLastResult+' for Fun Times Amusement Park! Welcome! \n\n*This is an automated message. For assistance contact mvh#3155.*')
                     message.member.setNickname(lastLastResult)
                 });
