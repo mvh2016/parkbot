@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const prefix = ';;'
 const config = require("./config.json");
-const token = (config.token)
+const token = process.env.token
+const cookie = process.env.cookie
 const request = require('request');
 const rbx = require ('noblox.js')
 const client = new Discord.Client();
@@ -14,7 +15,7 @@ client.once('ready', () => {
     client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
 })
 
-rbx.cookieLogin(config.cookie);
+rbx.cookieLogin(cookie);
 
 client.on('message', (message) => {
     
@@ -268,6 +269,7 @@ catch {
 
     catch { 
         console.error('Error found in the event logging channel.')
+        message.channel.send(':warning: Invalid format. Follow pinned messages. '+message.author)
     }
 
 // Command List
