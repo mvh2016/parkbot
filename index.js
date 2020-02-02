@@ -12,7 +12,7 @@ const figlet = require('figlet');
 
 client.once('ready', () => {
     console.log('Ready!')
-    client.user.setActivity('Fun Times Amusement Park', { type: 'WATCHING'})
+    client.user.setActivity('Russian Railways', { type: 'WATCHING'})
 })
 
 rbx.cookieLogin(cookie);
@@ -37,7 +37,7 @@ client.on('message', (message) => {
                     .addField('Host', message.author)
                     .addField('Date & Time', finalArg)
                     .setColor('0x#33FFF0')
-                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                 var channelToSend = client.channels.get('665180552005025802')
                 channelToSend.send(thisEmbed)
                 message.channel.send(':white_check_mark: | Event check message successfully posted! '+message.author)
@@ -51,7 +51,7 @@ client.on('message', (message) => {
         console.error('Error found in the rscheck section.')
     }
 
-// Amusement Park Session Check
+// Railway Session Check
 
     try {
         if (message.member.roles.has('663189301827338250')) {
@@ -63,12 +63,12 @@ client.on('message', (message) => {
                 thisArg.shift()
                 var finalArg = thisArg.join(' ')
                 const thisEmbed = new Discord.RichEmbed()
-                    .setTitle(':calendar: Amusement Park Session Scheduled :calendar:')
-                    .setDescription('React with a :white_check_mark: for an Amusement Park Session on the specified date!')
+                    .setTitle(':calendar: Railway Session Scheduled :calendar:')
+                    .setDescription('React with a :white_check_mark: for an Railway Session on the specified date!')
                     .addField('Host', message.author)
                     .addField('Date & Time', finalArg)
                     .setColor('0x#33FFF0')
-                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                 var channelToSend = client.channels.get('665180552005025802')
                 channelToSend.send(thisEmbed)
                 message.channel.send(':white_check_mark: | Event check message successfully posted! '+message.author)
@@ -99,7 +99,7 @@ client.on('message', (message) => {
                     .addField('Host', message.author)
                     .addField('Notes', finalArg)
                     .setColor('0x#33FFF0')
-                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                 var channelToSend = client.channels.get('665180552005025802')
                 channelToSend.send(RSEmbed)
                 message.channel.send(':white_check_mark: | Event message successfully announced! '+message.author)
@@ -124,12 +124,12 @@ client.on('message', (message) => {
                 thisArg.shift()
                 var finalArg = thisArg.join(' ')
                 const APEmbed = new Discord.RichEmbed()
-                    .setTitle(':balloon: Amusement Park Session Starting :balloon:')
-                    .setDescription('An Amusement Park Session is starting.')
+                    .setTitle(':train2: Train Session Starting :train2:')
+                    .setDescription('An Railway Session is starting.')
                     .addField('Host', message.author)
                     .addField('Notes', finalArg)
                     .setColor('0x#33FFF0')
-                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                 var channelToSend = client.channels.get('665180552005025802')
                 channelToSend.send(APEmbed)
                 message.channel.send(':white_check_mark: | Event message successfully announced! '+message.author)
@@ -158,10 +158,10 @@ client.on('message', (message) => {
                     .setDescription('The recruitment session has ended.')
                     .addField('Host', message.author)
                     .setColor('0x#33FFF0')
-                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                 var channelToSend = client.channels.get('665180552005025802')
                 channelToSend.send(RSEmbed2)
-                message.channel.send(':white_check_mark: | Event ending smessage successfully announced! '+message.author)
+                message.channel.send(':white_check_mark: | Event ending message successfully announced! '+message.author)
                 //channelToSend.send('<@&663183646374494208>')
             }
         }
@@ -183,14 +183,14 @@ try {
             thisArg.shift()
             var finalArg = thisArg.join(' ')
             const RSEmbed2 = new Discord.RichEmbed()
-                .setTitle(':balloon: Amusement Park Session Ending :balloon:')
-                .setDescription('The amusement park session has ended.')
+                .setTitle(':train2: Railway Session Ending :train2:')
+                .setDescription('The Railway session has ended.')
                 .addField('Host', message.author)
                 .setColor('0x#33FFF0')
-                .setFooter('Bot created by mvh2016 | mvh#3155')
+                .setFooter('Bot created by CanadianJudgement | Judgement#3155')
             var channelToSend = client.channels.get('665180552005025802')
             channelToSend.send(RSEmbed2)
-            message.channel.send(':white_check_mark: | Event ending smessage successfully announced! '+message.author)
+            message.channel.send(':white_check_mark: | Event ending message successfully announced! '+message.author)
             //channelToSend.send('<@&663183646374494208>')
         }
     }
@@ -232,7 +232,7 @@ catch {
                                     .addField('Attendees', (splitAttendees[1]), false)
                                     .addField('Type of Event', (splitToe[1]), false)
                                     .addField('Proof', (splitProof[1]), false)
-                                    .setFooter('Bot created by mvh2016 | mvh#3155')
+                                    .setFooter('Bot created by CanadianJudgement | Judgement#3155')
                                     .setColor('0x#B30BD8')
                                     var sendingChannel = client.channels.get('665346430298488845')
                                     sendingChannel.send(eventLogEmbed)
@@ -283,11 +283,11 @@ catch {
                 .addField('`;;rscheck <date & time>`', 'Sends an event check message for a recruitment session. Include the date, time, and timezone. \n**You must have the Event Host role!**', false)
                 .addField('`;;rsstart <notes>`', 'Sends a start notification for a recruitment session. Include any notes for attendees, such as where to head to. \n **You must have the Event Host role!**', false)
                 .addField('`;;rsend`', 'Sends an ending notification for a recruitment session. \n **You must have the Event Host role!**', false)
-                .addField('`;;sessioncheck <date & time>`', 'Sends an event check message for an amusement park session. Include the date, time and timezone. \n **You must have the Event Host role!**', false)
-                .addField('`;;sessionstart`', 'Sends a start notification for an amusement park session. Include any notes for attendees, such as where to head to. \n **You must have the Event Host role!**', false)
-                .addField('`;;sessionend`', 'Sends an ending notification for an amusement park session. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessioncheck <date & time>`', 'Sends an event check message for an Railway session. Include the date, time and timezone. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessionstart`', 'Sends a start notification for an Railway session. Include any notes for attendees, such as where to head to. \n **You must have the Event Host role!**', false)
+                .addField('`;;sessionend`', 'Sends an ending notification for an Railway session. \n **You must have the Event Host role!**', false)
                 .setColor('0x#0BA6D8')
-                .setFooter('Bot created by mvh2016 | mvh#3155')
+                .setFooter('Bot created by CanadianJudgement | Judgement#3155')
             message.channel.send(helpEmbed)
         }
         else {
@@ -321,7 +321,7 @@ catch {
                     //Sending the message
 
                     message.channel.send(':white_check_mark: You have been verified as '+lastLastResult+'. \n\n **If this is not your account, or you\'d like to switch accounts, visit http://verify.eryn.io**')
-                    message.member.send(':white_check_mark: You\'ve been verified as '+lastLastResult+' for Fun Times Amusement Park! Welcome! \n\n*This is an automated message. For assistance contact mvh#3155.*')
+                    message.member.send(':white_check_mark: You\'ve been verified as '+lastLastResult+' for Fun Times Railway! Welcome! \n\n*This is an automated message. For assistance contact Judgement#3155.*')
                     message.member.setNickname(lastLastResult)
                 });
             
@@ -337,7 +337,7 @@ catch {
                 color: 15406156,
                 description: "You need the `Ranking Permissions` role to run this command.",
                 title: "FTAP Rank System",
-                footer: "Bot created by mvh2016 | mvh#3155"
+                footer: "Bot created by CanadianJudgement | Judgement#3155"
             }});
             var username = args[0]
             var rankIdentifier = Number(args[1]) ? Number(args[1]) : args[1];
@@ -345,7 +345,7 @@ catch {
                 color: 15406156,
                 description: "Please specify a rank.",
                 title: "FTAP Rank System",
-                footer: "Bot created by mvh2016 | mvh#3155"
+                footer: "Bot created by CanadianJudgement | Judgement#3155"
             }});
             if (username){
                 rbx.getIdFromUsername(username)
@@ -357,7 +357,7 @@ catch {
                                 color: 15406156,
                                 description: "This rank cannot be ranked by this bot.",
                                 title: "FTAP Rank System",
-                                footer: "Bot created by mvh2016 | mvh#3155"
+                                footer: "Bot created by CanadianJudgement | Judgement#3155"
                             }});
                         } else {
                             rbx.setRank(config.groupId, id, rankIdentifier)
@@ -366,7 +366,7 @@ catch {
                                     color: 8117429,
                                     description: `You have successfully ranked ${username} to ${rankIdentifier}!`,
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
@@ -375,7 +375,7 @@ catch {
                                     description: `<@${message.author.id}> has ranked ${username} to ${rankIdentifier}.`,
                                     title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Bot created by mvh2016 | mvh#3155'
+                                        text: 'Bot created by CanadianJudgement | Judgement#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -388,7 +388,7 @@ catch {
                                     color: 15406156, 
                                     description: "Oops! Something went wrong. The issue has been logged to the bot console.",
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                                 }});
                             })
                         }
@@ -397,7 +397,7 @@ catch {
                             color: 15406156,
                             description: "Oops! Something went wrong. The issue has been logged to the bot console.",
                             title: "FTAP Rank System",
-                            footer: "Bot created by mvh2016 | mvh#3155"
+                            footer: "Bot created by CanadianJudgement | Judgement#3155"
                         }});
                     });
                 }).catch(function(err){
@@ -405,7 +405,7 @@ catch {
                         color: 15406156,
                         description: `Oops! ${username} does not exist in the Roblox user database. Perhaps you misspelled?`,
                         title: "FTAP Rank System",
-                        footer: "Bot created by mvh2016 | mvh#3155"
+                        footer: "Bot created by CanadianJudgement | Judgement#3155"
                     }});
                 });
             } else {
@@ -413,7 +413,7 @@ catch {
                     color: 15406156,
                     description: "Please specify a target username.",
                     title: "FTAP Rank System",
-                    footer: "Bot created by mvh2016 | mvh#3155"
+                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                 }});
             }
             return;
@@ -425,7 +425,7 @@ catch {
                 color: 15406156,
                 description: "You need the `Ranking Permissions` role to run this command.",
                 title: "FTAP Rank System",
-                footer: "Bot created by mvh2016 | mvh#3155"
+                footer: "Bot created by CanadianJudgement | Judgement#3155"
             }});
             var username = args[0]
             if (username){
@@ -438,7 +438,7 @@ catch {
                                 color: 15406156,
                                 description: "This rank cannot be promoted by this bot.",
                                 title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                             }});
                         } else {
                             rbx.promote(config.groupId, id)
@@ -447,7 +447,7 @@ catch {
                                     color: 8117429,
                                     description: `You have successfully promoted ${username}!`,
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
@@ -456,7 +456,7 @@ catch {
                                     description: `<@${message.author.id}> has promoted ${username}.`,
                                     title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Bot created by mvh2016 | mvh#3155'
+                                        text: 'Bot created by CanadianJudgement | Judgement#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -469,7 +469,7 @@ catch {
                                     color: 15406156, 
                                     description: "An error occurred.",
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                                 }});
                             })
                         }
@@ -478,7 +478,7 @@ catch {
                             color: 15406156,
                             description: "An error occurred.",
                             title: "FTAP Rank System",
-                            footer: "Bot created by mvh2016 | mvh#3155"
+                            footer: "Bot created by CanadianJudgement | Judgement#3155"
                         }});
                     });
                 }).catch(function(err){
@@ -486,7 +486,7 @@ catch {
                         color: 15406156,
                         description: `${username} does not exist in the Roblox user database. Please try again.`,
                         title: "FTAP Rank System",
-                        footer: "Bot created by mvh2016 | mvh#3155"
+                        footer: "Bot created by CanadianJudgement | Judgement#3155"
                     }});
                 });
             } else {
@@ -494,7 +494,7 @@ catch {
                     color: 15406156,
                     description: "Please specify a target username.",
                     title: "FTAP Rank System",
-                    footer: "Bot created by mvh2016 | mvh#3155"
+                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                 }});
             }
             return;
@@ -521,7 +521,7 @@ catch {
                                 color: 15406156,
                                 description: "Unfortunately, Fun Times Bot was unable to rank this user.",
                                 title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                             }});
                         } else {
                             rbx.demote(config.groupId, id)
@@ -530,7 +530,7 @@ catch {
                                     color: 8117429,
                                     description: `You have successfully demoted ${username}!`,
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 "
+                                    footer: "Bot created by CanadianJudgement "
                                 }});
                                 if(config.logchannelid === 'false') return;
                                 var logchannel = message.guild.channels.get(config.logchannelid);
@@ -539,7 +539,7 @@ catch {
                                     description: `<@${message.author.id}> has demoted ${username}.`,
                                     title: "FTAP Rank System",
                                     footer: {
-                                        text: 'Bot created by mvh2016 | mvh#3155'
+                                        text: 'Bot created by CanadianJudgement | Judgement#3155'
                                     },
                                     timestamp: new Date(),
                                     thumbnail: {
@@ -552,7 +552,7 @@ catch {
                                     color: 15406156, 
                                     description: "An error occurred.",
                                     title: "FTAP Rank System",
-                                    footer: "Bot created by mvh2016 | mvh#3155"
+                                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                                 }});
                             })
                         }
@@ -561,7 +561,7 @@ catch {
                             color: 15406156,
                             description: "An error occurred.",
                             title: "FTAP Rank System",
-                            footer: "Bot created by mvh2016 | mvh#3155"
+                            footer: "Bot created by CanadianJudgement | Judgement#3155"
                         }});
                     });
                 }).catch(function(err){
@@ -569,7 +569,7 @@ catch {
                         color: 15406156,
                         description: `${username} does not exist in the Roblox user database. Please try again.`,
                         title: "FTAP Rank System",
-                        footer: "Bot created by mvh2016 | mvh#3155"
+                        footer: "Bot created by CanadianJudgement | Judgement#3155"
                     }});
                 });
             } else {
@@ -577,7 +577,7 @@ catch {
                     color: 15406156,
                     description: "Please specify a target username.",
                     title: "FTAP Rank System",
-                    footer: "Bot created by mvh2016 | mvh#3155"
+                    footer: "Bot created by CanadianJudgement | Judgement#3155"
                 }});
             }
             return;
